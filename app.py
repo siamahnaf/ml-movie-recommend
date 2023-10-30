@@ -30,7 +30,3 @@ def helloWorld():
         data = response.json()
         recommended.append(data)
     return jsonify({"code": 200, "results": recommended}), 200
-
-
-if __name__ == "__main__":
-    app.run()
