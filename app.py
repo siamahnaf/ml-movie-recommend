@@ -5,7 +5,7 @@ import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/movies": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/movies": {"origins": "https://recommend-me-lake.vercel.app/"}})
 
 class APIAuthError(Exception):
   code = 403
