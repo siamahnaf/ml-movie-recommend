@@ -13,9 +13,9 @@ class APIAuthError(Exception):
 
 @app.route("/movies", methods=["POST"])
 def helloWorld():
-    movies_dict = pickle.load(open("/movie_dict.pkl", "rb"))
+    movies_dict = pickle.load(open("movie_dict.pkl", "rb"))
     movies = pd.DataFrame(movies_dict)
-    similarity = pickle.load(open("/similarity.pkl", "rb"))
+    similarity = pickle.load(open("similarity.pkl", "rb"))
     movie_name = request.json["movie_name"]
     movie_index = movies[movies["title"] == movie_name].index
     if len(movie_index) == 0:
@@ -30,3 +30,6 @@ def helloWorld():
         data = response.json()
         recommended.append(data)
     return jsonify({"code": 200, "results": recommended}), 200
+
+if __name__ == "__app__":
+    app.run(debug=True)
